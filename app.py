@@ -13,7 +13,7 @@ from src.core import process_inpaint
 
 def image_download_button(pil_image, filename: str, fmt: str, label="Download"):
     if fmt not in ["jpg", "png"]:
-        raise Exception(f"Unknown image format (Available: {fmt} - case sensitive)")
+        raise Exception(f"Format Desconhecido (Available: {fmt} - case sensitive)")
     
     pil_format = "JPEG" if fmt == "jpg" else "PNG"
     file_format = "jpg" if fmt == "jpg" else "png"
@@ -39,16 +39,16 @@ if 'reuse_image' not in st.session_state:
 def set_image(img):
     st.session_state.reuse_image = img
 
-st.title("Magic-Eraser")
+st.title("Varinha Magica - By Nilton Jr")
 
 st.image(open("assets/demo.png", "rb").read())
 
 st.markdown(
     """
-    You don't have to worry about mastering photo editing techniques to remove an object from your photo. **Simply mark over the areas you want to erase, and our AI will take care of the rest.**
+    Você não precisa se preocupar em dominar as técnicas de edição de fotos para remover um objeto da sua foto. ** Simplesmente marque as áreas que você deseja apagar e nossa IA cuidará do resto.**
     """
 )
-uploaded_file = st.file_uploader("Choose image", accept_multiple_files=False, type=["png", "jpg", "jpeg"])
+uploaded_file = st.file_uploader("Escolha a imagem", accept_multiple_files=False, type=["png", "jpg", "jpeg"])
 
 if uploaded_file is not None:
     
@@ -72,7 +72,7 @@ if uploaded_file is not None:
     
     stroke_width = st.slider("Brush size", 1, 100, 50)
 
-    st.write("**Now draw (brush) the part of image that you want to remove.**")
+    st.write("**Agora desenhe (Varinha) a parte da imagem que você deseja remover.**")
     
     canvas_bg = deepcopy(img_input)
     aspect_ratio = canvas_bg.width / canvas_bg.height
@@ -126,5 +126,5 @@ if uploaded_file is not None:
                 label="Download Image"
             )
             
-            st.info("**TIP**: If the result is not perfect, you can download it then "
-                    "upload then remove the artifacts.")
+            st.info("** Dica **: Se o resultado não for perfeito, você pode baixá -lo então "
+                    "Faça o upload e remova os artefatos.")
