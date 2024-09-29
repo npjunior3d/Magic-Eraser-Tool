@@ -41,7 +41,7 @@ def set_image(img):
 
 st.title("Varinha Magica - By Nilton Jr")
 
-st.image(open("assets/demo.png", "rb").read())
+st.image(open("assets/demo2.png", "rb").read())
 
 st.markdown(
     """
